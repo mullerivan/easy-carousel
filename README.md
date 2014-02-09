@@ -5,6 +5,21 @@ easy-carousel
 Include the div HTML on your web site in some partial if you want only show on one web page and in your layout if you want to show this on all your webpage
 
 	<div class="slider"></div
+#include css
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+or
+
+    requirements::themedCSS('bootstrap.min');
+
+#fade effect
+just include the css for fade
+
+        <link rel="stylesheet" type="text/css" href="slider-fade.css">
+or
+
+        Requirements::themedCSS('slider-fade');
 
 #Include the javascript on the  website
 
@@ -28,3 +43,4 @@ Include de slider.php on your document root directory  on silverstripe just drop
 	.carousel{
 		//What you want
 		}
+
