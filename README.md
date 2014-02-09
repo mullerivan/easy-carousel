@@ -9,7 +9,7 @@ Include the div HTML on your web site in some partial if you want only show on o
 
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 
-or
+on silverstripe
 
     requirements::themedCSS('bootstrap.min');
 
@@ -17,7 +17,7 @@ or
 just include the css for fade
 
         <link rel="stylesheet" type="text/css" href="slider-fade.css">
-or
+on silverstripe
 
         Requirements::themedCSS('slider-fade');
 
@@ -44,3 +44,4 @@ Include de slider.php on your document root directory  on silverstripe just drop
 		//What you want
 		}
 
+check slider-fade for more examples off style
