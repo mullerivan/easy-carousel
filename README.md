@@ -12,6 +12,7 @@ Include the div HTML on your web site in some partial if you want only show on o
 
 #Silverstripe
 on mysite/code/page.php
+
 	Requirements::javascript('themes/{MYTHEME}/javascript/jquery.js');
 	Requirements::javascript('themes/{MYTHEME}/javascript/carousel.js');
 	Requirements::javascript('themes/{MYTHEME}/javascript/transition.js');
@@ -23,6 +24,7 @@ Include de slider.php on your document root directory  on silverstripe just drop
 #Dependencis Jquery
 
 #Style
-.carousel{
-	//What you want
-	}
+
+	.carousel{
+		//What you want
+		}
