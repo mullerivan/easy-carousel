@@ -17,8 +17,8 @@ on mysite/code/page.php
 	Requirements::javascript('themes/{MYTHEME}/javascript/transition.js');
 	Requirements::javascript('themes/{MYTHEME}/javascript/slider.js');
 
-
-#Include de slider.php on your document root directory  on silverstripe just drop the file on the root project
+#php
+Include de slider.php on your document root directory  on silverstripe just drop the file on the root project
 
 #Dependencis Jquery
 
