@@ -1,4 +1,4 @@
-var link = new Array('http://www.cactusnelson.org.nz','http://google.com','http://mullerivan.com.ar'); //link to display SHOULD BE ARRAY
+var link = new Array('http://www.cactusnelson.org.nz','http://getbootstrap.com/javascript/#carousel','http://mullerivan.com.ar'); //link to display SHOULD BE ARRAY
 var interval = 2000; //The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
 var show_navigation = true; //show or hidden all navigation
 var folder = 'assets/slider/'; //where are  all the images
