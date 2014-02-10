@@ -1,4 +1,9 @@
-var link = new Array('http://www.cactusnelson.org.nz', 'http://getbootstrap.com/javascript/#carousel', 'http://mullerivan.com.ar'); //link to display SHOULD BE ARRAY
+var link = new Array('http://www.cactusnelson.org.nz',
+                     'http://getbootstrap.com/javascript/#carousel',
+                     'http://mullerivan.com.ar'); //link to display SHOULD BE ARRAY
+var alt =  new Array('Some alt to display here',
+                     'Another at'); //alt to display SHOULD BE ARRAY
+
 var interval = 2000; //The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
 var show_navigation = true; //show or hidden all navigation
 var folder = 'assets/slider/'; //where are  all the images
@@ -274,10 +279,10 @@ var css_folder = '/themes/simple/css/'; //where are slider-fade.css
 var data = new FormData();
 var navigation = '';
 data.append("folder", folder);
-
+//NAVIGATION
 if (show_navigation) {
-    navigation = '<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>'
+    navigation = '<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left glyphicon-nonescaped"></span></a>' +
+        '<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right glyphicon-nonescaped"></span></a>'
 }
 
 jQuery.ajax(
@@ -330,11 +335,17 @@ jQuery.ajax(
                 name = name.replace('\\', '');
                 name = name.replace('\\', '');
                 name = name.replace('\\', '');
+
+                //Retrieve real name to put on id
+                var id_name = name.split('/');
+                id_name = id_name[id_name.length-1].split('.')
+                id_name = id_name[0];
+
                 if (first) {
-                    $(".carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img data-src="" alt="First slide" src=' + name + '></a></div>');
+                    $(".carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img title="' +alt[key % alt.length]  +'" alt="' +alt[key % alt.length]  +'" src=' + name + ' id='+id_name+' ></a></div>');
                 }
                 else {
-                    $(".carousel-inner").append('<div class="item"><a href="' + link[key % link.length] + '"><img data-src="" alt="First slide" src=' + name + '></a></div>');
+                    $(".carousel-inner").append('<div class="item"><a href="' + link[key % link.length] + '"><img title="'+alt[key % alt.length]+'" alt="' +alt[key % alt.length]  +'" src=' + name + ' id='+id_name+'></a></div>');
                 }
                 first = false
             })
@@ -342,8 +353,6 @@ jQuery.ajax(
             $('.carousel').carousel({
                 interval: interval
             })
-
-
 
            if (fade_effect){
                 var fileref=document.createElement("link")
@@ -353,6 +362,35 @@ jQuery.ajax(
                 if (typeof fileref!="undefined")
                     document.getElementsByTagName("head")[0].appendChild(fileref)
            }
+            jQuery.ajax(
+                {
+                    url: 'slider.json',
+                    dataType: "text",
+                    data: data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    type: 'POST',
+                    success: function (json_data) {
+                        json_data =JSON.parse(json_data)
+                        jQuery.each(json_data, function (key, name) {
+                            var img_slider = document.getElementById(key);
+                            var anchor_tag = img_slider.parentNode
+                            jQuery.each(name,function(key,value){
+                                if (value.alt != "") {img_slider.alt = value.alt}
+                                if (value.alt != "") {img_slider.title = value.alt}
+                                if (value.link !="") {anchor_tag.href = value.link}
+                            })
+
+                        })
+
+                    }
+                })
+
         }
+
+
+
+
     })
 

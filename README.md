@@ -43,6 +43,24 @@ Include de slider.php on your document root directory  on silverstripe just drop
 
 #Dependencis Jquery
 
+#slider.json
+You can have a file name slider.json on the root directory witch contain some information about the each image some example are attached
+
+	{
+	   "uno": [
+		{"alt": "",
+		    "link": ""}
+		],
+	   "dos":[
+		{"alt": "DOS ALT",
+		"link": "http://somewhere.com" }
+		],
+	   "tres": [
+		{"alt": "TRES ALT",
+		"link": ""}
+		]
+	}
+
 #Style
 
 	.carousel{
