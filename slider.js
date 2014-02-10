@@ -323,10 +323,13 @@ jQuery.ajax(
             //INSERT IMAGES TO CARUSEL
             jQuery.each(array_data, function (key, name) {
                 //replace especial characters
-                name = name.replace('[', '')
-                name = name.replace(']', '')
-                name = name.replace('"', '')
-                name = name.replace('"', '')
+                name = name.replace('[', '');
+                name = name.replace(']', '');
+                name = name.replace('"', '');
+                name = name.replace('"', '');
+                name = name.replace('\\', '');
+                name = name.replace('\\', '');
+                name = name.replace('\\', '');
                 if (first) {
                     $(".carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img data-src="" alt="First slide" src=' + name + '></a></div>');
                 }
