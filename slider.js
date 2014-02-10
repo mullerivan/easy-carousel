@@ -1,4 +1,4 @@
-var link = 'http://www.cactusnelson.org.nz'; //link to display
+var link = new Array('http://www.cactusnelson.org.nz','http://google.com','http://mullerivan.com.ar'); //link to display SHOULD BE ARRAY
 var interval = 2000; //The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
 var show_navigation = true; //show or hidden all navigation
 var folder = 'assets/slider/'; //where are  all the images
@@ -305,10 +305,10 @@ jQuery.ajax(
                 name= name.replace('"','')
                 name= name.replace('"','')
                 if (first){
-                    $( ".carousel-inner" ).append( '<div class="item active"><a href="'+link+'"><img data-src="" alt="First slide" src='+name+'></a></div>');
+                    $( ".carousel-inner" ).append( '<div class="item active"><a href="'+link[key % link.length]+'"><img data-src="" alt="First slide" src='+name+'></a></div>');
                 }
                 else{
-                    $( ".carousel-inner" ).append( '<div class="item"><a href="'+link+'"><img data-src="" alt="First slide" src='+name+'></a></div>');
+                    $( ".carousel-inner" ).append( '<div class="item"><a href="'+link[key % link.length]+'"><img data-src="" alt="First slide" src='+name+'></a></div>');
                 }
                 first = false
             })
