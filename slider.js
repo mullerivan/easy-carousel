@@ -1,9 +1,7 @@
 var link = 'http://www.cactusnelson.org.nz'; //link to display
 var interval = 2000; //The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
-var silverstripe = 'true'; //Use the setWith property from the CMS
 var show_navigation = true; //show or hidden all navigation
-var folder = 'slider'; //where are  all the images
-
+var folder = 'assets/slider/'; //where are  all the images
 
 /* ========================================================================
  * Bootstrap: carousel.js v3.1.0
@@ -268,7 +266,7 @@ var folder = 'slider'; //where are  all the images
 var data = new FormData();
 var navigation = '';
 data.append("folder", folder);
-data.append("silverstripe", silverstripe);
+
 if(show_navigation){
     navigation ='<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>' +
     '<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>'
@@ -284,13 +282,7 @@ jQuery.ajax(
         processData: false,
         type: 'POST',
         success: function(data){
-            var array_data, img_folder;
-            if (silverstripe){
-                img_folder = "assets/"+folder+"/_resampled/SetWidth400-";
-            }else{
-                img_folder = folder;
-            }
-
+            var array_data;
             array_data = data.split(',');
             var first = true;
             //INSERT HTML FOR CARUSEL
@@ -313,10 +305,10 @@ jQuery.ajax(
                 name= name.replace('"','')
                 name= name.replace('"','')
                 if (first){
-                    $( ".carousel-inner" ).append( '<div class="item active"><a href="'+link+'"><img data-src="" alt="First slide" src='+img_folder+name+'></a></div>');
+                    $( ".carousel-inner" ).append( '<div class="item active"><a href="'+link+'"><img data-src="" alt="First slide" src='+name+'></a></div>');
                 }
                 else{
-                    $( ".carousel-inner" ).append( '<div class="item"><a href="'+link+'"><img data-src="" alt="First slide" src='+img_folder+name+'></a></div>');
+                    $( ".carousel-inner" ).append( '<div class="item"><a href="'+link+'"><img data-src="" alt="First slide" src='+name+'></a></div>');
                 }
                 first = false
             })
