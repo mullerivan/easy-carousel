@@ -28,7 +28,7 @@ on silverstripe
 #Silverstripe
 on mysite/code/page.php
 
-	Requirements::javascript('themes/{MYTHEME}/javascript/jquery.
+	Requirements::javascript('themes/{MYTHEME}/javascript/jquery.js);
 	Requirements::javascript('themes/{MYTHEME}/javascript/slider.js');
 
 #php
