@@ -268,6 +268,7 @@ var folder = 'slider'; //where are  all the images
 var data = new FormData();
 var navigation = '';
 data.append("folder", folder);
+data.append("silverstripe", silverstripe);
 if(show_navigation){
     navigation ='<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>' +
     '<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>'
@@ -287,7 +288,7 @@ jQuery.ajax(
             if (silverstripe){
                 img_folder = "assets/"+folder+"/_resampled/SetWidth400-";
             }else{
-                img_folder = "assets/"+folder;
+                img_folder = folder;
             }
 
             array_data = data.split(',');
