@@ -307,12 +307,12 @@ jQuery.ajax(
                 jQuery.each(array_data, function (key, name) {
                     if (first) {
                         jQuery('.carousel-indicators').append(
-                            '<li data-target="#myCarousel" data-slide-to="' + key + ' "class="active"></li>'
+                            '<li data-target="#myCarousel" data-slide-to="'+ key +'" class="active"></li>'
                         )
                     }
                     else {
                         jQuery('.carousel-indicators').append(
-                            '<li data-target="#myCarousel" data-slide-to="' + key + 'class="" ></li>'
+                            '<li data-target="#myCarousel" data-slide-to="' + key + '" ></li>'
                         )
                     }
                     first = false
