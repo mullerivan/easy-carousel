@@ -2,7 +2,7 @@ var link = new Array('http://www.cactusnelson.org.nz','http://google.com','http:
 var interval = 2000; //The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
 var show_navigation = true; //show or hidden all navigation
 var folder = 'assets/slider/'; //where are  all the images
-
+//Check line 275 where is the ajaxs call
 /* ========================================================================
  * Bootstrap: carousel.js v3.1.0
  * http://getbootstrap.com/javascript/#carousel
