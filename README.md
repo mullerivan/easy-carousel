@@ -11,7 +11,7 @@ Include the div HTML on your web site in some partial if you want only show on o
 
 on silverstripe
 
-    requirements::themedCSS('slider.css');
+    Requirements::themedCSS('slider.css');
 
 #fade effect
 just include the css for fade
