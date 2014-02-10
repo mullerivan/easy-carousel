@@ -2,6 +2,8 @@ var link = new Array('http://www.cactusnelson.org.nz', 'http://getbootstrap.com/
 var interval = 2000; //The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
 var show_navigation = true; //show or hidden all navigation
 var folder = 'assets/slider/'; //where are  all the images
+var fade_effect = true ; //fade efect
+var css_folder = '/themes/simple/css/'; //where are slider-fade.css
 //Check line 275 where is the ajaxs call
 /* ========================================================================
  * Bootstrap: carousel.js v3.1.0
@@ -338,6 +340,16 @@ jQuery.ajax(
                 interval: interval
             })
 
+
+
+           if (fade_effect){
+                var fileref=document.createElement("link")
+                fileref.setAttribute("rel", "stylesheet");
+                fileref.setAttribute("type", "text/css");
+                fileref.setAttribute("href", css_folder+'slider-fade.css');
+                if (typeof fileref!="undefined")
+                    document.getElementsByTagName("head")[0].appendChild(fileref)
+           }
         }
     })
 
