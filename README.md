@@ -7,11 +7,11 @@ Include the div HTML on your web site in some partial if you want only show on o
 	<div class="slider"></div
 #include css
 
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="slider.css">
 
 on silverstripe
 
-    requirements::themedCSS('bootstrap.min');
+    requirements::themedCSS('slider.css');
 
 #fade effect
 just include the css for fade
