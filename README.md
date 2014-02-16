@@ -4,7 +4,7 @@ easy-carousel
 #Slider
 Include the div HTML on your web site in some partial if you want only show on one web page and in your layout if you want to show this on all your webpage
 
-	<div class="slider"></div>
+	<div class="cactus-slider"></div>
 #include css
 
     <link rel="stylesheet" type="text/css" href="cactus-slider.css">
