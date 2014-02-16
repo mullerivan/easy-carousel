@@ -18,6 +18,10 @@ just include the css for fade
 
         <link rel="stylesheet" type="text/css" href="slider-fade.css">
 
+--Custom fade efect
+just edit the time  with the transition-duration:  property inside the  slider-fade.css and change the  seconds parameter
+
+	
 on silverstripe
 
         Requirements::themedCSS('slider-fade');

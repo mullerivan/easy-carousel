@@ -1,4 +1,5 @@
 .carousel-fade .carousel-inner .item {
+    transition-duration: 1s;
     opacity: 0;
     -webkit-transition-property: opacity;
     -moz-transition-property: opacity;
