@@ -7,7 +7,7 @@ Include the div HTML on your web site in some partial if you want only show on o
 	<div class="slider"></div>
 #include css
 
-    <link rel="stylesheet" type="text/css" href="slider.css">
+    <link rel="stylesheet" type="text/css" href="cactus-slider.css">
 
 on silverstripe
 
