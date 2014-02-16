@@ -299,7 +299,7 @@ jQuery.ajax(
             array_data = data.split(',');
             var first = true;
             //INSERT HTML FOR CARUSEL
-            jQuery('.slider').append(
+            jQuery('.cactus-slider').append(
                 '<div id="myCarousel" class="carousel slide carousel-fade col-lg-8 col-offset-2" data-ride="carousel">' +
                     '<ol class="carousel-indicators">' +
 
