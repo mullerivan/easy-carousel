@@ -11,12 +11,12 @@ Include the div HTML on your web site in some partial if you want only show on o
 
 on silverstripe
 
-    Requirements::themedCSS('slider.css');
+    Requirements::themedCSS('cactus-slider.css');
 
 #fade effect
 just include the css for fade
 
-        <link rel="stylesheet" type="text/css" href="slider-fade.css">
+        <link rel="stylesheet" type="text/css" href="cactus-slider-fade.css">
 
 --Custom fade efect
 just edit the time  with the transition-duration:  property inside the  slider-fade.css and change the  seconds parameter
@@ -24,7 +24,7 @@ just edit the time  with the transition-duration:  property inside the  slider-f
 	
 on silverstripe
 
-        Requirements::themedCSS('slider-fade');
+        Requirements::themedCSS('cactus-slider-fade');
 
 or change the option on the js file
 
@@ -34,20 +34,20 @@ or change the option on the js file
 
 #Include the javascript on the  website
 
-	jquery, carousel.js, transition.js, slider.js
+	jquery, slider.js
 
 #Silverstripe
 on mysite/code/page.php
 
 	Requirements::javascript('themes/{MYTHEME}/javascript/jquery.js);
-	Requirements::javascript('themes/{MYTHEME}/javascript/slider.js');
+	Requirements::javascript('themes/{MYTHEME}/javascript/cactus-slider.js');
 
 #php
 Include de slider.php on your document root directory  on silverstripe just drop the file on the root project
 
 #Dependencis Jquery
 
-#slider.json
+#cactus-slider.json
 You can have a file name slider.json on the root directory witch contain some information about the each image some example are attached
 
 	{
