@@ -13,6 +13,8 @@ on silverstripe
 
     Requirements::themedCSS('cactus-slider.css');
 
+#font
+Copy the font folder on your project  like where are the css folder in the same  level
 #fade effect
 just include the css for fade
 
