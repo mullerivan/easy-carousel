@@ -299,6 +299,8 @@ jQuery.ajax(
             array_data = data.split(',');
             var first = true;
             //INSERT HTML FOR CARUSEL
+	if (jQuery('.cactus-slider') !=  null) {
+            jQuery('.cactus-slider').html(''); //Clear all first
             jQuery('.cactus-slider').append(
                 '<div id="myCarousel" class="carousel slide carousel-fade col-lg-8 col-offset-2" data-ride="carousel">' +
                     '<ol class="carousel-indicators">' +
@@ -351,6 +353,7 @@ jQuery.ajax(
                 }
                 first = false
             })
+} 
 
             $('.carousel').carousel({
                 interval: interval
