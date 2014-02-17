@@ -332,9 +332,11 @@ jQuery.ajax(
                 name = name.replace(']', '');
                 name = name.replace('"', '');
                 name = name.replace('"', '');
-                name = name.replace('\\', '');
-                name = name.replace('\\', '');
-                name = name.replace('\\', '');
+		for (var i=0;i<20 ;i++)
+		{ 
+			name = name.replace('\\', '');
+		}
+
 
                 //Retrieve real name to put on id
                 var id_name = name.split('/');
