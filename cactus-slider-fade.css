@@ -5,6 +5,9 @@
     -moz-transition-property: opacity;
     -o-transition-property: opacity;
     transition-property: opacity;
+ /* Required to prevent pixel jumping during css transform */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 .carousel-fade .carousel-inner .active {
     opacity: 1;
@@ -22,3 +25,6 @@
 .carousel-fade .carousel-control {
     z-index: 2;
 }
+
+
+
