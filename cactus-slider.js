@@ -9,6 +9,7 @@ var show_navigation = true; //show or hidden all navigation
 var folder = 'assets/slider/'; //where are  all the images
 var fade_effect = true; //fade efect
 var css_folder = '/themes/simple/css/'; //where are slider-fade.css
+var version_of_ie_or_false = isIE();
 //Check line 275 where is the ajaxs call
 /* ========================================================================
  * Bootstrap: carousel.js v3.1.0
@@ -282,26 +283,17 @@ if (typeof fileref != "undefined")
     document.getElementsByTagName("head")[0].appendChild(fileref)
 
 
-
 // extra variables
-var data = new FormData();
+//var data = new FormData();
 var navigation = '';
-data.append("folder", folder);
-//NAVIGATION
+//data.append("folder", folder);
+////NAVIGATION
 
-if (show_navigation) {
-    navigation = '<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left glyphicon-nonescaped"></span></a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right glyphicon-nonescaped"></span></a>'
-}
 
 jQuery.ajax(
     {
         url: 'cactus-slider.php',
-        dataType: "text",
-        data: data,
-        cache: false,
-        contentType: false,
-        processData: false,
+        data: { folder: folder},
         type: 'POST',
         success: function (data) {
             var array_data;
@@ -310,6 +302,12 @@ jQuery.ajax(
             //INSERT HTML FOR CARUSEL
             if (jQuery('.cactus-slider') != null) {
                 jQuery('.cactus-slider').html(''); //Clear all first
+                // Navigation icons
+                if (show_navigation) {
+                    navigation = '<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left glyphicon-nonescaped"></span></a>' +
+                        '<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right glyphicon-nonescaped"></span></a>'
+                }
+                //append all the carusel
                 jQuery('.cactus-slider').append(
                     '<div id="myCarousel" class="carousel slide carousel-fade col-lg-8 col-offset-2" data-ride="carousel">' +
                         '<ol class="carousel-indicators">' +
@@ -375,39 +373,42 @@ jQuery.ajax(
                 if (typeof fileref != "undefined")
                     document.getElementsByTagName("head")[0].appendChild(fileref)
             }
-            jQuery.ajax(
-                {
-                    url: 'cactus-slider.json',
-                    dataType: "text",
-                    data: data,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    type: 'POST',
-                    success: function (json_data) {
-                        json_data = JSON.parse(json_data)
-                        jQuery.each(json_data, function (key, name) {
 
-                            var img_slider = document.getElementById(key);
-                            if (img_slider) {
-                                var anchor_tag = img_slider.parentNode
-                                jQuery.each(name, function (key, value) {
-                                    if (value.alt != "") {
-                                        img_slider.alt = value.alt
-                                    }
-                                    if (value.alt != "") {
-                                        img_slider.title = value.alt
-                                    }
-                                    if (value.link != "") {
-                                        anchor_tag.href = value.link
-                                    }
-                                })
-                            }
+            if (version_of_ie_or_false != 7) {
+                jQuery.ajax(
+                    {
+                        url: 'cactus-slider.json',
+                        dataType: "text",
+                        data: data,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        type: 'POST',
+                        success: function (json_data) {
+                            json_data = JSON.parse(json_data)
+                            jQuery.each(json_data, function (key, name) {
 
-                        })
+                                var img_slider = document.getElementById(key);
+                                if (img_slider) {
+                                    var anchor_tag = img_slider.parentNode
+                                    jQuery.each(name, function (key, value) {
+                                        if (value.alt != "") {
+                                            img_slider.alt = value.alt
+                                        }
+                                        if (value.alt != "") {
+                                            img_slider.title = value.alt
+                                        }
+                                        if (value.link != "") {
+                                            anchor_tag.href = value.link
+                                        }
+                                    })
+                                }
 
-                    }
-                })
+                            })
+
+                        }
+                    })
+            }
 
         }
 
@@ -415,4 +416,11 @@ jQuery.ajax(
 
 
     })
+
+
+//Extra funcionaliti for make sure  Internet Explorer work fine
+function isIE() {
+    var myNav = navigator.userAgent.toLowerCase();
+    return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+}
 

@@ -47,6 +47,7 @@ Include de slider.php on your document root directory  on silverstripe just drop
 #Dependencis Jquery
 
 #cactus-slider.json
+internet explorer 7 doesn't support it.
 You can have a file name slider.json on the root directory witch contain some information about the each image some example are attached
 
 	{

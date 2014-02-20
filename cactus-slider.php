@@ -3,7 +3,7 @@
 function getSlider()
 {
     $list = Array();
-
+//
     $images = glob($_POST['folder'].'*.{jpeg,gif,png,jpg}',GLOB_BRACE);
 
     foreach ($images  as $key => $file_die) {
