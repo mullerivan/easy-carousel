@@ -6,9 +6,10 @@ var alt = new Array('Some alt to display here',
 
 var interval = 2000; //The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
 var show_navigation = true; //show or hidden all navigation
-var folder = 'assets/slider/'; //where are  all the images
+var folder = '../../../assets/slider/'; //where are  all the images
 var fade_effect = true; //fade efect
 var css_folder = '/themes/simple/css/'; //where are slider-fade.css
+var ajaxphp_folder = "themes/simple/cactus-carousel/"; // slao for json file
 var version_of_ie_or_false = isIE();
 //Check line 275 where is the ajaxs call
 /* ========================================================================
@@ -292,7 +293,7 @@ var navigation = '';
 
 jQuery.ajax(
     {
-        url: 'cactus-slider.php',
+        url: ajaxphp_folder+'cactus-slider.php',
         data: { folder: folder},
         type: 'POST',
         success: function (data) {
@@ -377,7 +378,7 @@ jQuery.ajax(
             if (version_of_ie_or_false != 7) {
                 jQuery.ajax(
                     {
-                        url: 'cactus-slider.json',
+                        url: ajaxphp_folder+'cactus-slider.json',
                         dataType: "text",
                         data: data,
                         cache: false,
