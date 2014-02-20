@@ -7,11 +7,8 @@ Include the div HTML on your web site in some partial if you want only show on o
 	<div class="cactus-slider"></div>
 #include css
 
-    <link rel="stylesheet" type="text/css" href="cactus-slider.css">
-
-on silverstripe
-
-    Requirements::themedCSS('cactus-slider.css');
+NOW IS AUTOMATIC INCLUDE BY CSS just be sure you  have the correct css_folder defined
+(line 277 javascript)
 
 #font
 Copy the font folder on your project  like where are the css folder in the same  level

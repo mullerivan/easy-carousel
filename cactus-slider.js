@@ -1,13 +1,13 @@
 var link = new Array('http://www.cactusnelson.org.nz',
-                     'http://getbootstrap.com/javascript/#carousel',
-                     'http://mullerivan.com.ar'); //link to display SHOULD BE ARRAY
-var alt =  new Array('Some alt to display here',
-                     'Another at'); //alt to display SHOULD BE ARRAY
+    'http://getbootstrap.com/javascript/#carousel',
+    'http://mullerivan.com.ar'); //link to display SHOULD BE ARRAY
+var alt = new Array('Some alt to display here',
+    'Another at'); //alt to display SHOULD BE ARRAY
 
 var interval = 2000; //The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.
 var show_navigation = true; //show or hidden all navigation
 var folder = 'assets/slider/'; //where are  all the images
-var fade_effect = true ; //fade efect
+var fade_effect = true; //fade efect
 var css_folder = '/themes/simple/css/'; //where are slider-fade.css
 //Check line 275 where is the ajaxs call
 /* ========================================================================
@@ -274,12 +274,21 @@ var css_folder = '/themes/simple/css/'; //where are slider-fade.css
 
 }(jQuery);
 
+var fileref = document.createElement("link")
+fileref.setAttribute("rel", "stylesheet");
+fileref.setAttribute("type", "text/css");
+fileref.setAttribute("href", css_folder + 'cactus-slider.css');
+if (typeof fileref != "undefined")
+    document.getElementsByTagName("head")[0].appendChild(fileref)
+
+
 
 // extra variables
 var data = new FormData();
 var navigation = '';
 data.append("folder", folder);
 //NAVIGATION
+
 if (show_navigation) {
     navigation = '<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left glyphicon-nonescaped"></span></a>' +
         '<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right glyphicon-nonescaped"></span></a>'
@@ -299,74 +308,73 @@ jQuery.ajax(
             array_data = data.split(',');
             var first = true;
             //INSERT HTML FOR CARUSEL
-	if (jQuery('.cactus-slider') !=  null) {
-            jQuery('.cactus-slider').html(''); //Clear all first
-            jQuery('.cactus-slider').append(
-                '<div id="myCarousel" class="carousel slide carousel-fade col-lg-8 col-offset-2" data-ride="carousel">' +
-                    '<ol class="carousel-indicators">' +
+            if (jQuery('.cactus-slider') != null) {
+                jQuery('.cactus-slider').html(''); //Clear all first
+                jQuery('.cactus-slider').append(
+                    '<div id="myCarousel" class="carousel slide carousel-fade col-lg-8 col-offset-2" data-ride="carousel">' +
+                        '<ol class="carousel-indicators">' +
 
-                    '</ol>' +
-                    '<div class="carousel-inner"></div>' +
-                    navigation +
-                    '</div>'
-            )
-            if (show_navigation) {
+                        '</ol>' +
+                        '<div class="carousel-inner"></div>' +
+                        navigation +
+                        '</div>'
+                )
+                if (show_navigation) {
+                    jQuery.each(array_data, function (key, name) {
+                        if (first) {
+                            jQuery('.carousel-indicators').append(
+                                '<li data-target="#myCarousel" data-slide-to="' + key + '" class="active"></li>'
+                            )
+                        }
+                        else {
+                            jQuery('.carousel-indicators').append(
+                                '<li data-target="#myCarousel" data-slide-to="' + key + '" ></li>'
+                            )
+                        }
+                        first = false
+
+                    })
+                }
+                first = true;
+                //INSERT IMAGES TO CARUSEL
                 jQuery.each(array_data, function (key, name) {
+                    //replace especial characters
+                    name = name.replace('[', '');
+                    name = name.replace(']', '');
+                    name = name.replace('"', '');
+                    name = name.replace('"', '');
+                    for (var i = 0; i < 20; i++) {
+                        name = name.replace('\\', '');
+                    }
+
+
+                    //Retrieve real name to put on id
+                    var id_name = name.split('/');
+                    id_name = id_name[id_name.length - 1].split('.')
+                    id_name = id_name[0];
+
                     if (first) {
-                        jQuery('.carousel-indicators').append(
-                            '<li data-target="#myCarousel" data-slide-to="'+ key +'" class="active"></li>'
-                        )
+                        $(".carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + ' ></a></div>');
                     }
                     else {
-                        jQuery('.carousel-indicators').append(
-                            '<li data-target="#myCarousel" data-slide-to="' + key + '" ></li>'
-                        )
+                        $(".carousel-inner").append('<div class="item"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + '></a></div>');
                     }
                     first = false
-
                 })
             }
-            first = true;
-            //INSERT IMAGES TO CARUSEL
-            jQuery.each(array_data, function (key, name) {
-                //replace especial characters
-                name = name.replace('[', '');
-                name = name.replace(']', '');
-                name = name.replace('"', '');
-                name = name.replace('"', '');
-		for (var i=0;i<20 ;i++)
-		{ 
-			name = name.replace('\\', '');
-		}
-
-
-                //Retrieve real name to put on id
-                var id_name = name.split('/');
-                id_name = id_name[id_name.length-1].split('.')
-                id_name = id_name[0];
-
-                if (first) {
-                    $(".carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img title="' +alt[key % alt.length]  +'" alt="' +alt[key % alt.length]  +'" src=' + name + ' id='+id_name+' ></a></div>');
-                }
-                else {
-                    $(".carousel-inner").append('<div class="item"><a href="' + link[key % link.length] + '"><img title="'+alt[key % alt.length]+'" alt="' +alt[key % alt.length]  +'" src=' + name + ' id='+id_name+'></a></div>');
-                }
-                first = false
-            })
-} 
 
             $('.carousel').carousel({
                 interval: interval
             })
 
-           if (fade_effect){
-                var fileref=document.createElement("link")
+            if (fade_effect) {
+                var fileref = document.createElement("link")
                 fileref.setAttribute("rel", "stylesheet");
                 fileref.setAttribute("type", "text/css");
-                fileref.setAttribute("href", css_folder+'cactus-slider-fade.css');
-                if (typeof fileref!="undefined")
+                fileref.setAttribute("href", css_folder + 'cactus-slider-fade.css');
+                if (typeof fileref != "undefined")
                     document.getElementsByTagName("head")[0].appendChild(fileref)
-           }
+            }
             jQuery.ajax(
                 {
                     url: 'cactus-slider.json',
@@ -377,15 +385,24 @@ jQuery.ajax(
                     processData: false,
                     type: 'POST',
                     success: function (json_data) {
-                        json_data =JSON.parse(json_data)
+                        json_data = JSON.parse(json_data)
                         jQuery.each(json_data, function (key, name) {
+
                             var img_slider = document.getElementById(key);
-                            var anchor_tag = img_slider.parentNode
-                            jQuery.each(name,function(key,value){
-                                if (value.alt != "") {img_slider.alt = value.alt}
-                                if (value.alt != "") {img_slider.title = value.alt}
-                                if (value.link !="") {anchor_tag.href = value.link}
-                            })
+                            if (img_slider) {
+                                var anchor_tag = img_slider.parentNode
+                                jQuery.each(name, function (key, value) {
+                                    if (value.alt != "") {
+                                        img_slider.alt = value.alt
+                                    }
+                                    if (value.alt != "") {
+                                        img_slider.title = value.alt
+                                    }
+                                    if (value.link != "") {
+                                        anchor_tag.href = value.link
+                                    }
+                                })
+                            }
 
                         })
 
