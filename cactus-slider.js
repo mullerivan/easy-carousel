@@ -309,7 +309,7 @@ jQuery.ajax(
                         '<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right glyphicon-nonescaped"></span></a>'
                 }
                 //append all the carusel
-                jQuery('.cactus-slider').append(
+                jQuery('#cactus-slider').append(
                     '<div id="myCarousel" class="carousel slide carousel-fade col-lg-8 col-offset-2" data-ride="carousel">' +
                         '<ol class="carousel-indicators">' +
 
@@ -353,10 +353,10 @@ jQuery.ajax(
                     id_name = id_name[0];
 
                     if (first) {
-                        $(".carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + ' ></a></div>');
+                        $("#carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + ' ></a></div>');
                     }
                     else {
-                        $(".carousel-inner").append('<div class="item"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + '></a></div>');
+                        $("#carousel-inner").append('<div class="item"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + '></a></div>');
                     }
                     first = false
                 })
