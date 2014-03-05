@@ -353,10 +353,10 @@ jQuery.ajax(
                     id_name = id_name[0];
 
                     if (first) {
-                        $("#carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + ' ></a></div>');
+                        jQuery("#carousel-inner").append('<div class="item active"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + ' ></a></div>');
                     }
                     else {
-                        $("#carousel-inner").append('<div class="item"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + '></a></div>');
+                        jQuery("#carousel-inner").append('<div class="item"><a href="' + link[key % link.length] + '"><img title="' + alt[key % alt.length] + '" alt="' + alt[key % alt.length] + '" src=' + name + ' id=' + id_name + '></a></div>');
                     }
                     first = false
                 })
